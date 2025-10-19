@@ -68,6 +68,7 @@ app.post('/contact', async (req, res) => {
       service,
       message,
       timestamp: new Date()
+      
     });
 
     // 📧 Email to Brandace
