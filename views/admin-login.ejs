@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Login – Brandace</title>
+  <link rel="stylesheet" href="/css/admin-login.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notiflix@3.2.6/dist/notiflix-3.2.6.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/notiflix@3.2.6/dist/notiflix-aio-3.2.6.min.js"></script>
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-box fade-in">
+      <img src="/images/brandace.png" alt="Brandace Logo" class="logo" />
+      <h2>Welcome Back, Admin</h2>
+      <form id="loginForm">
+        <input type="email" id="email" placeholder="Email Address" required />
+        <input type="password" id="password" placeholder="Password" required />
+        <label class="remember-me">
+          <input type="checkbox" id="rememberMe" />
+          Remember Me
+        </label>
+        <button type="submit">Login</button>
+      </form>
+      <p class="error-message" id="errorMessage"></p>
+    </div>
+  </div>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyD3GCtedHmOatMFrmZuPkezza4bfa09XFw",
+      authDomain: "brandace-contact.firebaseapp.com",
+      projectId: "brandace-contact",
+      storageBucket: "brandace-contact.firebasestorage.app",
+      messagingSenderId: "999401361515",
+      appId: "1:999401361515:web:f8b3c681e29daffbce612e",
+      measurementId: "G-8KBWDK7JFJ"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+   document.getElementById('loginForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  const rememberMe = document.getElementById('rememberMe').checked;
+
+  Notiflix.Loading.standard('Logging you in...');
+
+  const persistence = rememberMe
+    ? firebase.auth.Auth.Persistence.LOCAL
+    : firebase.auth.Auth.Persistence.SESSION;
+
+  auth.setPersistence(persistence)
+    .then(() => auth.signInWithEmailAndPassword(email, password))
+    .then(user => user.user.getIdToken())
+    .then(token => {
+      return fetch('/session-login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token })
+      });
+    })
+    .then(() => {
+      Notiflix.Loading.remove();
+      window.location.href = '/admin';
+    })
+    .catch(error => {
+      Notiflix.Loading.remove();
+      Notiflix.Notify.failure('Login failed: ' + error.message);
+    });
+});
+  </script>
+</body>
+</html>

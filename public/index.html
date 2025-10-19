@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="images/Titlebar.png"/>
+  <title>Brandace - Home</title>
+  <link rel="stylesheet" href="/styles.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notiflix@3.2.6/dist/notiflix-3.2.6.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/notiflix@3.2.6/dist/notiflix-aio-3.2.6.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+  <!--  Navigation Bar -->
+  <nav class="navbar" id="navbar">
+ <a href="/index.html">
+      <img src="images/brandace.png" alt="Brandace Logo" />
+    </a>
+
+  <!-- Hamburger Icon -->
+  <div class="hamburger" id="hamburger">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+  <!-- Navigation Links -->
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#works">Our Works</a></li>
+    <li><a href="#clients">Clients</a></li>
+    <!-- CTA inside hamburger menu (mobile only) -->
+<div class="mobile-cta open-modal mobile-only">Contact Us</div>
+
+  </ul>
+<!-- CTA for desktop -->
+<a href="#" class="cta-btn open-modal desktop-only">Contact Us</a>
+
+
+
+  <!-- <a href="#" class="cta-btn" id="openModal">Contact Us</a> -->
+</nav>
+
+  <!--  Hero Section -->
+  <header id="hero" class="hero fade-in">
+    <div class="hero-content">
+      <!-- <h1>Welcome to Brandace</h1> -->
+      <p>we transform your vision into a striking visual presence<br>that connects with your audience.</p>
+      <a href="#works" class="btn">Explore</a>
+    </div>
+  </header>
+
+  <!--  About Us -->
+  <section id="about" class="about fade-in">
+    <h2>About Us</h2>
+    <p>We are a Lagos-based creative agency that helps brands stand out through design, strategy, and storytelling.<br>Whether you're launching something new or undergoing a rebrand, we're your trusted creative partner committed to bringing your vision to life with clarity, originality, and impact.</p>
+  </section>
+
+  <!--  Our Services -->
+<section id="services" class="services fade-in">
+  <h2>Our Services</h2>
+  <div class="service-grid">
+    <div class="service-item">
+
+      <h3>Brand Identity</h3>
+      <p>We bring your vision to life. From colors to concepts, we shape brands with purpose and personality.</p>
+    </div>
+    <div class="service-item">
+      <h3>Web Design</h3>
+      <p>We design clean, responsive websites that elevate your brand and convert visitors into clients.</p>
+    </div>
+    <div class="service-item">
+      <h3>Graphic Design</h3>
+      <p>Transforming ideas into visuals that speak louder than words.
+          Let’s design something that makes your brand unforgettable.</p>
+    </div>
+    <!-- <div class="service-item">
+      <h3>Content Creation</h3>
+      <p>Copywriting, photography, and video production that bring your brand to life.</p>
+    </div> -->
+    <!-- <div class="service-item">
+      <h3>Digital Marketing</h3>
+      <p>SEO, social media, and campaigns that drive engagement and growth.</p>
+    </div> -->
+  </div>
+</section>
+ 
+
+
+
+ <!--  Our Works -->
+<section id="works" class="works fade-in">
+  <h2>Our Works</h2>
+  <div class="work-grid">
+    <a href="/branding.html" class="lightbox">
+      <img src="images/branding.jpg" alt="Branding Project" />
+      <h3>Branding Project</h3>
+      <h5 class="view-more-btn">View More ></h5>
+    </a>
+    <a href="/web-design.html" class="lightbox">
+      <img src="images/web design.jpg" alt="Web Design Project" />
+      <h3>Web Design Project</h3>
+      <h5 class="view-more-btn">View More ></h5>
+    </a>
+    <!-- <a href="/mobile-app.html" class="lightbox">
+      <img src="images/mobile.jpg" alt="Mobile App Project" />
+      <h3>Mobile App. Project</h3>
+      <h5 class="view-more-btn">View More ></h5>
+    </a> -->
+    <a href="/graphic-design.html" class="lightbox">
+      <img src="images/graphic.jpg" alt="Graphic Design Project" />
+      <h3>Graphic Design Project</h3>
+      <h5 class="view-more-btn">View More ></h5>
+    </a>
+    <!-- <a href="/motion-graphics.html" class="lightbox">
+      <img src="images/motion.jpg" alt="Digital Marketing Project" />
+      <h3>Motion Graphics</h3>
+      <h5 class="view-more-btn">View More ></h5>
+    </a> -->
+  </div>
+</section>
+
+<!-- CTA inside hamburger menu (mobile only) -->
+ <section class="cta-mobile">
+<div class="mobile-cta open-modal mobile-only">
+  <i class="fa-solid fa-envelope" style="margin-right:8px;"></i>
+  Email Us
+</div>
+<h4 class="or mobile-only">or</h4>
+<a href="https://wa.me/2348029453879?text=Hello,%20I%20need%20your%20Service." target="_blank" class="whatsapp-cta mobile-only">
+  <i class="fab fa-whatsapp" style="margin-right:8px;"></i>
+  Chat on WhatsApp
+</a>
+</section>
+ <!--  Our Clients -->
+<section id="clients" class="clients fade-in">
+  <h2>Our Clients</h2>
+  <div id="clientCarousel" class="client-carousel">
+    <div  class="carousel-track"></div>
+  </div>
+ 
+</section> 
+ <!--  Brandace Footer -->
+<footer class="footer fade-in">
+  <div class="footer-top">
+    <!--  Logo & Tagline -->
+    <div class="footer-brand">
+      <img src="images/brandace.png" alt="Brandace Logo" />
+      <p class="tagline">Creative ideas. Bold execution.</p>
+    </div>
+
+    <!-- Social Icons -->
+    <div class="footer-social">
+      <a href="https://instagram.com" target="_blank"><img src="images/instagram.png" alt="Instagram" /></a>
+      <a href="https://threads.net" target="_blank"><img src="images/threads.png" alt="Threads" /></a>
+      <a href="https://facebook.com" target="_blank"><img src="images/facebook.png" alt="Facebook" /></a>
+      <a href="https://linkedin.com" target="_blank"><img src="images/linkedin.png" alt="LinkedIn" /></a>
+      <a href="https://twitter.com" target="_blank"><img src="images/twitter.png" alt="Twitter" /></a>
+      <a href="https://youtube.com" target="_blank"><img src="images/youtube.png" alt="YouTube" /></a>
+    </div>
+  </div>
+
+  <!-- Contact Info -->
+  <div class="footer-contact">
+    <p>We're based in Lagos, Nigeria.<br />
+    We work with clients from all over. Get in touch with us!</p>
+    <p>Email: <a href="mailto:hello@brandace.com">hello@brandace.com</a></p>
+    <p>Phone: <a href="tel:+2348000000000">+234 800 000 0000</a></p>
+    <p>Address: Brandace Creative, 12 Idejo Street, Victoria Island, Lagos</p>
+  </div>
+
+  <!-- Footer Navigation -->
+  <div class="footer-nav">
+    <a href="#hero">Home</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#works">Works</a>
+    <a href="#clients">Clients</a>
+  </div>
+
+  <!--  Copyright -->
+  <div class="footer-bottom">
+    <p>&copy; 2025 Brandace. All Rights Reserved | Creative Development by Brandace Studio</p>
+  </div>
+  <!-- Scroll to Top Button -->
+  <button id="scrollTopBtn" title="Go to top">^</button>
+
+</footer>
+
+<!-- 📬 Contact Form Modal -->
+ 
+<div id="contactModal" class="modal">
+   <div class="modal-content">
+     <span class="close" id="closeModal">&times;</span>
+    <h2>Hey There,<br>thank you for reaching out to us, let us know how we can help you.</h2>
+    <form class="contact-form" id="contact-form">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="tel" name="phone" placeholder="Phone Number" required />
+      <input type="email" name="email" placeholder="Email Address" required />
+      <select name="service" required>
+        <option value="">Service Needed</option>
+        <option value="branding">Branding</option>
+        <option value="web">Web Design</option>
+        <option value="content">Content Creation</option>
+        <option value="marketing">Digital Marketing</option>
+      </select>
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <button type="submit" class="submit-btn">
+  <span class="btn-content">
+    <i class="fa-solid fa-envelope" style="margin-right:8px;"></i>
+    Send Email
+  </span>
+  <span class="btn-loader">
+    <i class="fa-solid fa-spinner fa-spin"></i>
+  </span>
+</button>
+
+      <!-- <button type="submit">
+         <i class="fa-solid fa-envelope" style="margin-right:8px;"></i>
+        Send Email</button> -->
+      <button onclick="window.location.href='https://wa.me/2348029453879'" style="background:#25D366; color:white; padding:10px 20px; border:none; border-radius:5px; font-size:16px; cursor:pointer;">
+  <i class="fab fa-whatsapp" style="margin-right:8px;"></i> Chat on WhatsApp
+</button>
+    </form>
+  </div>
+</div>
+
+
+  <script src="script.js"></script>
+</body>
+</html>

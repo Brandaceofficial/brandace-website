@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+    <link rel="icon" href="images/Titlebar.png"/>
+      <link rel="icon" href="images/Titlebar.png"/>
+  <title><%= category %> Projects | Brandace</title>
+  
+</head>
+<body>
+  <%- include('partials/navbar') %>
+  <header>
+    <h1><%= category %> Projects</h1>
+  </header>
+
+  <section class="work-grid">
+    <% items.forEach(item => { %>
+      <div class="work-card">
+        <img src="<%= item.imageUrl %>"  alt="<%= item.title %>" />
+        <h3><%= item.title %></h3>
+        <p><%= item.description %></p>
+      </div>
+    <% }) %>
+  </section>
+
+
+  <footer>
+    &copy; <%= new Date().getFullYear() %> Brandace Creative Studio
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

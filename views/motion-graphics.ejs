@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" href="images/Titlebar.png"/>
+  <title>Branding Projects - Brandace</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notiflix@3.2.6/dist/notiflix-3.2.6.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/notiflix@3.2.6/dist/notiflix-aio-3.2.6.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+   <!--  Navigation Bar -->
+  <nav class="navbar" id="navbar">
+    <a href="/index.html">
+      <img src="images/brandace.png" alt="Brandace Logo" />
+    </a>
+  
+
+  <!-- Hamburger Icon -->
+  <div class="hamburger" id="hamburger">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+  <!-- Navigation Links -->
+  <ul class="nav-links" id="nav-links">
+    <li><a href="/index.html">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#works">Our Works</a></li>
+    <li><a href="#clients">Clients</a></li>
+    <!-- CTA inside hamburger menu (mobile only) -->
+<div class="mobile-cta open-modal mobile-only">Contact Us</div>
+  </ul>
+<!-- CTA for desktop -->
+<a href="#" class="cta-btn open-modal desktop-only">Contact Us</a>
+</nav>
+  <div class="navbg"></div>
+  <h1 class="catname">Motion Graphics Projects</h1>
+  <div class="work-grid">
+    <% items.forEach(item => { %>
+      <div class="work-card-cat" onclick="showImageModal('<%= item.imageUrl %>')">
+        <img src="<%= item.imageUrl %>" alt="<%= item.title %>" />
+        <h3><%= item.title %></h3>
+        <p><%= item.description %></p>
+      </div>
+    <% }) %>
+  </div>
+   <!-- Modal -->
+<div id="imageModal" class="modal2">
+  <span class="close2" onclick="closeImageModal()">&times;</span>
+  <img class="modal-content2" id="modalImage" />
+</div>
+
+<!-- 📬 Contact Form Modal -->
+ 
+<div id="contactModal" class="modal">
+   <div class="modal-content">
+     <span class="close" id="closeModal">&times;</span>
+    <h2>Hey There,<br>thank you for reaching out to us, let us know how we can help you.</h2>
+    <form class="contact-form" id="contact-form">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="tel" name="phone" placeholder="Phone Number" required />
+      <input type="email" name="email" placeholder="Email Address" required />
+      <select name="service" required>
+        <option value="">Service Needed</option>
+        <option value="branding">Branding</option>
+        <option value="web">Web Design</option>
+        <option value="content">Content Creation</option>
+        <option value="marketing">Digital Marketing</option>
+      </select>
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <button type="submit" class="submit-btn">
+  <span class="btn-content">
+    <i class="fa-solid fa-envelope" style="margin-right:8px;"></i>
+    Send Email
+  </span>
+  <span class="btn-loader">
+    <i class="fa-solid fa-spinner fa-spin"></i>
+  </span>
+</button>
+      <button onclick="window.location.href='https://wa.me/2348029453879'" style="background:#25D366; color:white; padding:10px 20px; border:none; border-radius:5px; font-size:16px; cursor:pointer;">
+  <i class="fab fa-whatsapp" style="margin-right:8px;"></i> Chat on WhatsApp
+</button>
+    </form>
+  </div>
+</div>
+<script>
+  function showImageModal(imageSrc) {
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    modal.style.display = 'block';
+    modalImg.src = imageSrc;
+  }
+
+  function closeImageModal() {
+    document.getElementById('imageModal').style.display = 'none';
+  }
+
+ document.addEventListener('DOMContentLoaded', () => {
+
+  const modalTriggers = document.querySelectorAll('.open-modal');
+  const contactModal = document.getElementById('contactModal');
+  const closeModal = document.getElementById('closeModal');
+  const form = document.querySelector('.contact-form');
+
+  // Open modal
+  modalTriggers.forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      contactModal.style.display = 'block';
+    });
+  });
+
+  // Close modal
+  closeModal.addEventListener('click', () => {
+    contactModal.style.display = 'none';
+  });
+
+  window.addEventListener('click', (e) => {
+    
+    if (e.target === contactModal) {
+      contactModal.style.display = 'none';
+    }
+  });
+
+// Form validation
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const formData = {
+    name: form.name.value.trim(),
+    phone: form.phone.value.trim(),
+    email: form.email.value.trim(),
+    service: form.service.value,
+    message: form.message.value.trim()
+  };
+  
+  if (Object.values(formData).some(value => !value)) {
+    Notiflix.Notify.failure('Please fill out all fields.');
+    return;
+  }
+
+  const submitBtn = form.querySelector('.submit-btn');
+  submitBtn.disabled = true;
+  submitBtn.classList.add('loading');
+
+  // const isEmpty = Object.values(formData).some(value => !value);
+  // if (isEmpty) {
+  //   Notiflix.Notify.failure('Please fill out all fields.');
+  //   return;
+  // }
+
+  try {
+    const response = await fetch('http://localhost:3000/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData)
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      Notiflix.Notify.success('Email sent successfully!');
+      form.reset();
+      contactModal.style.display = 'none';
+    } else {
+      Notiflix.Notify.failure('Something went wrong.');
+    }
+  } catch (error) {
+    Notiflix.Notify.failure('Server error. Try again later.');
+    console.error(error);
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.classList.remove('loading');
+  }
+});
+});
+</script>
+  <!-- <script src="script.js"></script> -->
+   <script src="/script.js" defer></script>
+</body>
+</html>
