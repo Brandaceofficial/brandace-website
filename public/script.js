@@ -25,7 +25,7 @@
 // our clients auto scroll
 
 document.addEventListener('DOMContentLoaded', () => {
-  fetch('http://localhost:3000/api/client-logos')
+  fetch('/api/client-logos')
     .then(res => res.json())
     .then(data => {
       const track = document.querySelector('#clientCarousel .carousel-track');

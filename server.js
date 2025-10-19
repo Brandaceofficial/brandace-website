@@ -186,8 +186,13 @@ cloudinary.config({
 });
 
 app.get('/api/client-logos', async (req, res) => {
-  const logos = await ClientLogo.find().sort({ createdAt: -1 });
+  try{
+    const logos = await ClientLogo.find().sort({ createdAt: -1 });
   res.json(logos);
+  }catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to fetch logos' });
+  }
 });
 
 
