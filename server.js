@@ -56,7 +56,7 @@ const db = admin.firestore();
 //   res.json({ success: true });
 // });
 // ✅ Contact Route
-app.post('/contact', async (req, res) => {
+app.post('/api/contact', async (req, res) => {
   const { name, phone, email, service, message } = req.body;
 
   try {
@@ -105,7 +105,7 @@ app.post('/contact', async (req, res) => {
     res.status(200).json({ success: true, message: "Form received!" });
 
   } catch (error) {
-    console.error("❌ Error processing submission:", error);
+    console.error("Error processing submission:", error);
     res.status(500).json({ success: false, message: "Something went wrong." });
   }
 });
