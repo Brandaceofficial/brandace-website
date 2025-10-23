@@ -503,6 +503,7 @@ body>nav>a>img{
   .work-grid{
     display: flex;
     align-items: center;
+   
   }
 }
 
@@ -700,11 +701,11 @@ body>nav>a>img{
   font-weight: bold;
   font-size: 12px;
   text-align: center;
- 
   cursor: pointer;
   width: 30%;
   align-self: center;
 }
+
 .whatsapp-cta{
   background-color: #05b414;
   color: #ffffff;
@@ -718,6 +719,7 @@ body>nav>a>img{
   align-self: center;
   /* margin-left: -1rem; */
 }
+
 .cta-mobile{
   width: 100%;
   height: 5rem;
@@ -776,7 +778,7 @@ body>nav>a>img{
   height: 5rem;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 }
 
@@ -821,7 +823,10 @@ body>nav>a>img{
       background-color: #f9f9f9;
       color: #333;
     }
-
+    .work-card-cat>h3,p{
+      display: none;
+    }
+    
     .navbg{
       height: 6rem;
       width: 100%;
@@ -837,42 +842,28 @@ body>nav>a>img{
     }
 
     .catname {
-     
       display: flex;
       margin-top: 3rem;
-      font-size: 2.5rem;
+      font-size: 1.5rem;
       align-items: center;
       justify-content: center;
     }
 
- .work-grid-cat {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  padding: 1rem;
-  justify-items: center;
-  align-items: start;
-}
+   
 
-/* Force two columns on medium/small screens */
-@media (max-width: 768px) {
-  .work-grid-cat {
-    grid-template-columns: repeat(2, 1fr);
+    .work-grid-cat {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1rem;
     padding: 1rem;
-  }
-}
+    justify-items: center;
+    align-items: start;
+   }
 
-/* Go back to single column on very small phones */
-@media (max-width: 480px) {
-  .work-grid-cat {
-    grid-template-columns: 1fr;
-  }
-}
-
-.work-card-cat {
+   .work-card-cat {
   width: 100%;
-  max-width: 200px;
+  max-width: 300px;
+  height: 300px;
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
@@ -882,49 +873,9 @@ body>nav>a>img{
 
 .work-card-cat img {
   width: 100%;
-  height: 150px;
+  height: 300px;
   object-fit: cover;
 }
-
-
-    /* .work-grid-cat {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      padding: 3rem;
-    }
-
-    .work-card-cat {
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      overflow: hidden;
-      transition: transform 0.3s ease;
-    }
-
-    .work-card-cat:hover {
-      transform: translateY(-5px);
-    }
-
-    .work-card-cat img {
-      width: 100%;
-      height: 610px;
-      object-fit: cover;
-    }
-
-    .work-card-cat h3 {
-      margin: 1rem;
-      font-size: 1.2rem;
-      color: #111;
-      display: none;
-    }
-
-    .work-card-cat p {
-      margin: 0 1rem 1rem;
-      font-size: 0.95rem;
-      color: #666;
-      display: none;
-    } */
 
    
 
@@ -934,6 +885,30 @@ body>nav>a>img{
       font-size: 0.9rem;
       color: #aaa;
     }
+
+/* Force two columns on medium/small screens */
+@media (max-width: 750px) {
+  .work-grid-cat {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+  }
+  .work-card-cat{
+      height: 200px;
+    }
+}
+
+/* Go back to single column on very small phones */
+@media (max-width: 450px) {
+  .work-grid-cat {
+    grid-template-columns: 1fr;
+  }
+  .work-card-cat{
+      height: 200px;
+    }
+}
+
+
 
  
 

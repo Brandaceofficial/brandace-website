@@ -1,7 +1,8 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8" />
+   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="images/Titlebar.png"/>
   <title>Branding Projects - Brandace</title>
@@ -40,20 +41,22 @@
 </nav>
   <div class="navbg"></div>
   <h1 class="catname">Web Design Projects</h1>
-  <div class="work-grid">
+  <div class="work-grid-cat">
     <% items.forEach(item => { %>
-     <div class="work-card-cat" onclick="showImageModal('<%= item.imageUrl %>')">
+        <div class="work-card-cat" onclick="showImageModal('<%= item.imageUrl %>')">
         <img src="<%= item.imageUrl %>" alt="<%= item.title %>" />
         <h3><%= item.title %></h3>
         <p><%= item.description %></p>
       </div>
     <% }) %>
-  </div>
-   <!-- Modal -->
+  </div> 
+  
+ <!-- Modal -->
 <div id="imageModal" class="modal2">
   <span class="close2" onclick="closeImageModal()">&times;</span>
   <img class="modal-content2" id="modalImage" />
 </div>
+
 
 <!-- 📬 Contact Form Modal -->
  
@@ -89,7 +92,8 @@
   </div>
 </div>
 <script>
-  function showImageModal(imageSrc) {
+  
+function showImageModal(imageSrc) {
     const modal = document.getElementById('imageModal');
     const modalImg = document.getElementById('modalImage');
     modal.style.display = 'block';
@@ -99,6 +103,7 @@
   function closeImageModal() {
     document.getElementById('imageModal').style.display = 'none';
   }
+
 
  document.addEventListener('DOMContentLoaded', () => {
 
@@ -147,12 +152,6 @@ form.addEventListener('submit', async (e) => {
   const submitBtn = form.querySelector('.submit-btn');
   submitBtn.disabled = true;
   submitBtn.classList.add('loading');
-
-  // const isEmpty = Object.values(formData).some(value => !value);
-  // if (isEmpty) {
-  //   Notiflix.Notify.failure('Please fill out all fields.');
-  //   return;
-  // }
 
   try {
     const response = await fetch('http://localhost:3000/contact', {
