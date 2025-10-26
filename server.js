@@ -7,6 +7,7 @@ const nodemailer = require('nodemailer');
 const admin = require('firebase-admin');
 const app = express();
 const WorkItem = require('./models/WorkItem');
+const cookieParser = require('cookie-parser');
 
 
 app.use(express.json());
@@ -24,6 +25,7 @@ require('dotenv').config();
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 
 
@@ -55,7 +57,7 @@ const db = admin.firestore();
 //   console.log('Contact form received:', req.body);
 //   res.json({ success: true });
 // });
-// ✅ Contact Route
+// ✅ Contact Route/Public Route
 app.post('/api/contact', async (req, res) => {
   const { name, phone, email, service, message } = req.body;
 
@@ -86,6 +88,9 @@ app.post('/api/contact', async (req, res) => {
       subject: `Thank you for contacting Brandace`,
       text: `Hi ${name},\n\nThank you for reaching out to Brandace. We’ve received your request for "${service}" and will get back to you shortly.\n\nIf you have any urgent questions, feel free to call us at +234 802 945 3879.\n\n— Brandace Creative Team`
     });
+     console.log('Saving to Firestore...');
+      console.log('Sending email to Brandace...');
+      console.log('Sending email to client...');
 
     // // 📲 WhatsApp to Brandace
     // await twilioClient.messages.create({
@@ -146,7 +151,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // Admin dashboard
-app.get('/admin', async (req, res) => {
+app.get('/admin', checkAdminSession, async (req, res) => {
   try {
     const logos = await ClientLogo.find().sort({ createdAt: -1 });
     const workItems = await WorkItem.find().sort({ createdAt: -1 });
@@ -256,6 +261,8 @@ app.get('/motion-graphics.html', async (req, res) => {
   const items = await WorkItem.find({ category: 'Motion Graphics' });
   res.render('motion-graphics', { items });
 });
+
+//Admin Login
 
 app.get('/admin-login', (req, res) => {
   res.render('admin-login');
